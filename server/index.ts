@@ -11,8 +11,8 @@ app.use(cors({
 
 app.use(express.static(__dirname + "/../dist/"));
 
-const uriBase = 'https://eastus.api.cognitive.microsoft.com/face/v1.0/detect/';
-const subscriptionKey = 'dontstealmykeypls';
+const uriBase = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect/';
+const subscriptionKey = '31be15ce340a482f8a14748dc3e30bcf';
 
 const port = 3000;
 
@@ -33,7 +33,12 @@ app.post('/', (req, res) => {
     }
   };
 
-  // TODO: Send Request to Face API
+  request.post(options, (error, response, body) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(body);
+
+  })
+
   // TODO: Send Face API response to front-end
   // TODO: Save Face API response to database
 });
